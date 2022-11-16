@@ -9,7 +9,7 @@ CMake入门的开始
 
 ### Exercise 1 - Building a Basic Project(构建一个基本项目)
 
-[构建一个Hello World基本项目](./)
+[构建一个Hello World基本项目]()
 
 ### Exercise 2 - Specifying the C++ Standard(指定c++标准)
 
