@@ -9,11 +9,11 @@ CMake入门的开始
 
 ### Exercise 1 - Building a Basic Project(构建一个基本项目)
 
-[构建一个Hello World基本项目]()
+[构建一个Hello World基本项目](./Step1-A-Basic-Starting-Point/Exercise1-Building-a-Basic-Project/README.md)
 
 ### Exercise 2 - Specifying the C++ Standard(指定c++标准)
 
-在上一个项目上添加C++11标准
+[在上一个项目上添加C++11标准](./Step1-A-Basic-Starting-Point/Exercise2-Specifying-the-C%2B%2B-Standard/README.md)
 
 ```null
 CMake-introduction
