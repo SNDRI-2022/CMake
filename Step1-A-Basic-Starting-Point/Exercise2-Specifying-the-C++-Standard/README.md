@@ -11,11 +11,18 @@ CMake 有一些特殊变量，这些变量要么在幕后创建，要么在项�
 
 ### 说明
 
-* `CMAKE_CXX_STANDARD`
-* `CMAKE_CXX_STANDARD_REQUIRED`
-* `set()`
-
-### 要编辑的文件
+* `CMAKE_CXX_STANDARD` CMake3.1中加入,设置CMAKE C++标准,缺省时为CXX_STANDARD(c++标准)
+* `CMAKE_CXX_STANDARD_REQUIRED` CMake3.1中加入,设置CMAKE_CXX_STANDARD是否为强制启动，off为可选，on为强制，缺省时为CMAKE_CXX_STANDARD
+* `set()` 将普通、缓存或环境变量设置为给定值
+  `set(<variable> <value>... [PARENT_SCOPE])`variable在当前函数或目录范围内设置给定
+  [set()官方文档](https://cmake.org/cmake/help/latest/command/set.html#command:set)
+  
+### 要编辑的文件+
 
 * `CMakeListse.txt`
 * `main.cpp`
+
+### 操作
+
+* 在main.cpp中添加c++11的功能语句 `vector<long long>,begin(),end()`
+* 更新CMakeLists.txt以达到支持C++11功能
