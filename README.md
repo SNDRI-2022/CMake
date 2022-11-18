@@ -15,6 +15,6 @@ CMake入门的开始
 
 [在上一个项目上添加C++11标准](./Step1-A-Basic-Starting-Point/Exercise2-Specifying-the-C%2B%2B-Standard/README.md)
 
-### Exercise3-Adding-a-Version-Number-and-Configured-Header-File
+### Exercise3-Adding-a-Version-Number-and-Configured-Header-File(添加版本,替换文件内容为CMakeLists.txt中的变量,添加头文件)
 
 [添加版本号和配置的头文件](./Step1-A-Basic-Starting-Point/Exercise3-Adding-a-Version-Number-and-Configured-Header-File/README.md)
