@@ -42,3 +42,14 @@ target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
 
 ## 入门
 
+编辑Exercise3。在`./`中使用`configure_file()`将给定的输入文件复制到输出文件并替换输入文件内容中的一些变量值。
+
+接下来,创建一个定义版本号的输入头文件`head.h`,它将接受从`configure_file()`.
+
+最后,更新main.cpp打印它的版本号。
+
+## 解决方案
+
+在本练习中，我们通过打印版本号来改进我们的可执行文件。虽然我们可以专门在源代码中执行些操作，但使用`CMakeLists.txt`可以让我们维护版本号的单一数据源。
+
+首先，我们修改`CMakeLists.txt`文件以使用`peoject()`命令设置项目名称和版本号。当`peoject()`命令被调用,CMake在后台定义`Exercise3_VERSIONMINOR`和`Exercise3_VERSIONMINOR`。

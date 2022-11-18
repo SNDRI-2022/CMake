@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # 设置项目名称(VERSION为可写项)
-project(Exercise2 VERSION 0.1.0)
+project(Exercise2 VERSION 1.0)
 
 set(ENV{CMAKE_GENERATOR} "MinGW Makefiles")
 # 让CMAKE支持C++11
