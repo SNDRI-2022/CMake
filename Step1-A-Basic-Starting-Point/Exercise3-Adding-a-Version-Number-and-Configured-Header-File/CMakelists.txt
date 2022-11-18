@@ -10,6 +10,5 @@ set(ENV{CMAKE_GENERATOR} "MinGW Makefiles")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
-
 # 添加可执行文件
 add_executable(Exercise3 main.cpp)
