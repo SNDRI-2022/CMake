@@ -1,14 +1,21 @@
 # 指定CMake支持的最低版本(VERSION为必写项)
 cmake_minimum_required(VERSION 3.10)
 
-# 设置项目名称(VERSION为可写项)
-project(Exercise3 VERSION 2.0)
+# 设置项目名称并设置版本号(注意名称Exercise3在exercise3.h.in中的应用)
+project(Exercise3 VERSION 5.9)
 
-set(ENV{CMAKE_GENERATOR} "MinGW Makefiles")
 # 让CMAKE支持C++11
 # 让CMAKE强制按C++11执行
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
+# 将exercise3.h.in文件进行替换处理后包含到build目录
+configure_file(exercise3.h.in exercise3.h)
+
 # 添加可执行文件
 add_executable(Exercise3 main.cpp)
+
+# 指定可执行目标在何处找include文件(为main.cpp中包含头文件时不会报错) 
+# 注意:文件中有空格时 "${CMAKE_BINARY_DIR}" 的双引号不能省
+# 注意:PUBLIC为大写.
+target_include_directories(Exercise3 PUBLIC "${CMAKE_BINARY_DIR}")

@@ -1,11 +1,16 @@
 #include <iostream>
-#include <vector>
+#include "exercise3.h"
 
-int main(int argv, char **argc)
+int main(int argc, char **argv)
 {
-    const std::vector<long long> test{123456789, 987654321, 1029384756};
-    for (auto i = test.begin(); i != test.end(); i++)
-        std::cout << *i << std::endl;
+    if (argc < 2)
+    {
+        // report version
+        std::cout << argv[0] << " Version " << Exercise3_VERSION_MAJOR << "."
+                  << Exercise3_VERSION_MINOR << std::endl;
+        std::cout << "Usage: " << argv[0] << " number" << std::endl;
+        return 1;
+    }
 
     return 0;
 }

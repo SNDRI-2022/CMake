@@ -10,8 +10,8 @@
 
 ## 有用的资源
 
-- [`<PROJECT-NAME>_VERSION_MAJOR`](https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_VERSION_MAJOR.html#variable:%3CPROJECT-NAME%3E_VERSION_MAJOR) 主要版本
-- [`<PROJECT-NAME>_VERSIONMINOR`](https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_VERSION_MINOR.html#variable:%3CPROJECT-NAME%3E_VERSION_MINOR) 最小版本
+- [`<PROJECT-NAME>_VERSION_MAJOR`](https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_VERSION_MAJOR.html#variable:%3CPROJECT-NAME%3E_VERSION_MAJOR) 主要版本,例如`project(Exercise3 VERSION 5.9)`中为5
+- [`<PROJECT-NAME>_VERSIONMINOR`](https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_VERSION_MINOR.html#variable:%3CPROJECT-NAME%3E_VERSION_MINOR) 次要版本,例如`project(Exercise3 VERSION 5.9)`中为9
 - [`configure_file()`](https://cmake.org/cmake/help/latest/command/configure_file.html#command:configure_file) 将文件复制到另一个位置并修改内容
 
 ``` cmake
@@ -22,7 +22,16 @@ configure_file(<input> <output>
                [NEWLINE_STYLE [UNIX|DOS|WIN32|LF|CRLF] ])
 ```
 
-将一个文件复制`<input>`到加一个文件，并替换作为输入文件内容或在输入文件内容中`<output>`每个变量引用都将替换为变量的当前值，如果未定义变量，则替换为空字符串。
+该命令将`<input>`文件复制到`<output>`文件，并替换`<input>`文件内容中引用为`@VAR@`或`${VAR}`的变量值为变量的当前值，如果未定义变量，则替换为空字符串
+
+```cmake
+//! 注意: @Exercise3_VERSION_MAJOR@ 中 Exercise3对应CMakeLists.txt中的项目名称
+//! 要注意大小写Exercise3为正确，EXERCISE3或exercise3将无法识别到,并当成未定义变量
+#define Exercise3_VERSION_MAJOR @Exercise3_VERSION_MAJOR@
+#define Exercise3_VERSION_MINOR ${Exercise3_VERSION_MINOR}
+//* 主要版本, 例如`project(Exercise3 VERSION 5.9)`中为5
+//* 次要版本,例如`project(Exercise3 VERSION 5.9)`中为9
+```
 
 - [`target_include_directories()`](https://cmake.org/cmake/help/latest/command/target_include_directories.html#command:target_include_directories)
 将包含目录添加到目标。
@@ -31,6 +40,11 @@ configure_file(<input> <output>
 target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
   <INTERFACE|PUBLIC|PRIVATE> [items1...]
   [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+
+# 指定可执行目标在何处找include文件(为main.cpp中包含头文件时不会报错) 
+# 注意:文件中有空格时 "${CMAKE_BINARY_DIR}" 的双引号不能省
+# 注意:PUBLIC为大写.
+target_include_directories(Exercise3 PUBLIC "${CMAKE_BINARY_DIR}")
 ```
 
 指定编译给定目标时要使用的包含目录。named`<target>`必须是由命令创建的，例如add_executable()或者add_library()并且不能是 ALIAS 目标。
@@ -52,4 +66,4 @@ target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
 
 在本练习中，我们通过打印版本号来改进我们的可执行文件。虽然我们可以专门在源代码中执行些操作，但使用`CMakeLists.txt`可以让我们维护版本号的单一数据源。
 
-首先，我们修改`CMakeLists.txt`文件以使用`peoject()`命令设置项目名称和版本号。当`peoject()`命令被调用,CMake在后台定义`Exercise3_VERSIONMINOR`和`Exercise3_VERSIONMINOR`。
+首先，我们修改`CMakeLists.txt`文件以使用`peoject()`命令设置项目名称和版本号。当`peoject()`命令被调用时,CMake在后台将`Exercise3_VERSIONMINOR`和`Exercise3_VERSIONMINOR`替换成`CMakeLists.txt`中变量的值。
