@@ -1,5 +1,6 @@
 # CMake-introduction
 
+因专业性质c/c++相关的内容将很少更新，转换成python
 学习CMake的测试平台(远程仓库)
 按照CMake官方文档进行
 
